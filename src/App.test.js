@@ -1,9 +1,10 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 import App from './App';
+import DayPicker from './DayPicker';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('renders DayPicker', () => {
+  const wrapper = mount(<App />);
+  expect(wrapper.contains(<DayPicker />)).toBe(true);
 });
