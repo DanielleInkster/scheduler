@@ -14,7 +14,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --fix .",
+    "lint-check": "eslint ."
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,11 +36,24 @@
   "devDependencies": {
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.4",
-    "enzyme-to-json": "^3.5.0"
+    "enzyme-to-json": "^3.5.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "prettier": "^2.1.2"
   },
   "jest": {
-  "snapshotSerializers": ["enzyme-to-json/serializer"],
-  "collectCoverageFrom": ["src/**/*.js", "!src/index.js"],
-  "coverageReporters": ["text"]
-}
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/index.js"
+    ],
+    "coverageReporters": [
+      "text"
+    ]
+  }
 }
