@@ -1,11 +1,11 @@
 import React from 'react';
-import DayPicker from './DayPicker.js'
+import DayPicker from './DayPicker.js';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-     <DayPicker />
+      <DayPicker />
     </div>
   );
 }
