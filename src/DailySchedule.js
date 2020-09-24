@@ -7,11 +7,11 @@ export default function DailySchedule({ date }) {
     { time: '10:00 AM', status: 'available' },
     { time: '11:00 AM', status: 'available' },
     { time: '12:00 PM', status: 'unavailable' },
-    { time: '13:00 PM', status: 'available' },
-    { time: '14:00 PM', status: 'available' },
-    { time: '15:00 PM', status: 'available' },
-    { time: '16:00 PM', status: 'available' },
-    { time: '17:00 PM', status: 'unavailable' },
+    { time: '1:00 PM', status: 'available' },
+    { time: '2:00 PM', status: 'available' },
+    { time: '3:00 PM', status: 'available' },
+    { time: '4:00 PM', status: 'available' },
+    { time: '5:00 PM', status: 'unavailable' },
   ];
 
   function renderTableHeader(data = schedule) {
