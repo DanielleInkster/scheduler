@@ -1,7 +1,13 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import App from './App';
-import DayPicker from './DayPicker';
+import DayPicker from '../src/containers/DayPicker';
+import { mount, configure, shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+configure({ adapter: new Adapter() });
+
+it('renders without crashing', () => {
+  shallow(<App />);
+});
 
 test('renders DayPicker', () => {
   const wrapper = mount(<App />);
