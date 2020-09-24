@@ -11,7 +11,11 @@ export default function Calendar() {
   return (
     <div>
       <DayPicker selectedDays={date} onDayClick={handleDayClick} />
-      <p>{date ? `${date.toISOString().substring(0, 10)}` : 'Please select a day 👻'}</p>
+      <p>
+        {date
+          ? `${date.toISOString().substring(0, 10)}`
+          : 'Please select a day for an appointment.'}
+      </p>
     </div>
   );
 }
