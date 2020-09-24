@@ -4,7 +4,7 @@ import PopupExample from './Popup';
 export default function DailySchedule({ date }) {
   const schedule = [
     { time: '9:00', status: 'blocked' },
-    { time: '10:00', status: 'available', button: <PopupExample /> },
+    { time: '10:00', status: 'available' },
     { time: '11:00', status: 'available' },
     { time: '12:00', status: 'blocked' },
     { time: '13:00', status: 'available' },
@@ -26,12 +26,16 @@ export default function DailySchedule({ date }) {
   function renderTableData(data = schedule) {
     if (date != null) {
       return (data = schedule.map((slot, index) => {
-        const { time, status, button } = slot;
+        const { time, status } = slot;
         return (
           <tr key={index}>
             <td>{time}</td>
             <td>{status}</td>
-            <td>{button}</td>
+            {status === 'available' && (
+              <td>
+                <PopupExample date={displayDate()} time={time} />
+              </td>
+            )}
           </tr>
         );
       }));
