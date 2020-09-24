@@ -1,5 +1,5 @@
 import React from 'react';
-import DailySchedule from './DailySchedule';
+import DailySchedule from '../containers/DailySchedule';
 import { mount, configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });

@@ -5,8 +5,8 @@ export default function Form({ date, time }) {
     <div>
       <center>
         <h3>Request for Appointment</h3>
-        <p>Date: {date}</p>
-        <p>Time: {time}</p>
+        <p id="date">Date: {date}</p>
+        <p id="time">Time: {time}</p>
         <form>
           <label htmlFor="fname">Full name:</label>
           <input type="text" id="fname" name="fname" placeholder="Ex: 'Peter Parker'" />
