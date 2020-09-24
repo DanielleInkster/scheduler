@@ -36,17 +36,17 @@ export default function DailySchedule({ date }) {
     }
   }
 
-  function displayDate() {
-    if (date === null) {
+  function displayDate(day = date) {
+    if (day === null) {
       return 'Please select a date for an appointment.';
     } else {
-      return date.toDateString();
+      return day.toDateString();
     }
   }
 
   return (
     <div>
-      {`${displayDate()}`}
+      <p id="date">{`${displayDate()}`}</p>
       <center>
         <table id="schedule">
           <tr>{renderTableHeader()}</tr>
