@@ -11,28 +11,22 @@ export default function Form({ date, time }) {
           <input type="text" id="fname" name="fname" placeholder="Ex: 'Peter Parker'" />
           <br />
           <br />
-          <label htmlFor="lname">Project name:</label>
-          <input type="text" id="lname" name="lname" placeholder="Ex: 'Best Project'" />
+          <label htmlFor="projname">Project name:</label>
+          <input type="text" id="projname" name="projname" placeholder="Ex: 'Best Project'" />
           <br />
           <br />
-          <label htmlFor="lname">Project description:</label>
+          <label htmlFor="projdesc">Project description:</label>
           <input
             type="text"
-            id="lname"
-            name="lname"
+            id="projdesc"
+            name="projdesc"
             maxLength="1000"
             placeholder="Maximum of 1000 characters"
           />
           <br />
           <br />
-          <label htmlFor="lname">Email Address:</label>
-          <input
-            type="text"
-            id="lname"
-            name="lname"
-            maxLength="1000"
-            placeholder="Ex: 'peter.parker@marvel.com'"
-          />
+          <label htmlFor="email">Email Address:</label>
+          <input type="text" id="email" name="email" placeholder="Ex: 'peter.parker@marvel.com'" />
           <br />
           <br />
           <input type="submit" value="Submit"></input>
