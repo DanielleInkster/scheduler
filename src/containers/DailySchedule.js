@@ -1,5 +1,5 @@
 import React from 'react';
-import FormPopup from './Popup';
+import FormPopup from '../components/Popup';
 
 export default function DailySchedule({ date }) {
   const schedule = [

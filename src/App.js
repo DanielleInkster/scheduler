@@ -1,5 +1,5 @@
 import React from 'react';
-import DayPicker from './DayPicker.js';
+import DayPicker from '../src/containers/DayPicker.js';
 import './App.css';
 
 function App() {
