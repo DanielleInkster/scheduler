@@ -1,9 +1,15 @@
 import React from 'react';
+import Popup from 'reactjs-popup';
 
 export default function DailySchedule({ date }) {
+  const PopupExample = (date) => (
+    <Popup trigger={<button> Trigger</button>} position="right center">
+      <div>{displayDate()}</div>
+    </Popup>
+  );
   const schedule = [
     { time: '9:00', status: 'blocked' },
-    { time: '10:00', status: 'available' },
+    { time: '10:00', status: 'available', button: PopupExample() },
     { time: '11:00', status: 'available' },
     { time: '12:00', status: 'blocked' },
     { time: '13:00', status: 'available' },
@@ -25,11 +31,12 @@ export default function DailySchedule({ date }) {
   function renderTableData(data = schedule) {
     if (date != null) {
       return (data = schedule.map((slot, index) => {
-        const { time, status } = slot;
+        const { time, status, button } = slot;
         return (
           <tr key={index}>
             <td>{time}</td>
             <td>{status}</td>
+            <td>{button}</td>
           </tr>
         );
       }));
@@ -48,7 +55,7 @@ export default function DailySchedule({ date }) {
     <div>
       <p id="date">{`${displayDate()}`}</p>
       <center>
-        <table id="schedule">
+        <table>
           <tr>{renderTableHeader()}</tr>
           <tbody>{renderTableData()}</tbody>
         </table>

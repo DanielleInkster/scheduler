@@ -12,7 +12,6 @@ export default function Calendar() {
 
   return (
     <div>
-      {console.log(date)}
       <DayPicker selectedDays={date} onDayClick={handleDayClick} />
       <DailySchedule date={date} />
     </div>
