@@ -9,14 +9,10 @@ export default function Calendar() {
   function handleDayClick(day) {
     selectDate(day);
   }
+
   return (
     <div>
       <DayPicker selectedDays={date} onDayClick={handleDayClick} />
-      <p>
-        {date
-          ? `${date.toISOString().substring(0, 10)}`
-          : 'Please select a day for an appointment.'}
-      </p>
       <DailySchedule date={date} />
     </div>
   );
