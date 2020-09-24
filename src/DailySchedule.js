@@ -12,17 +12,19 @@ export default function DailySchedule({ date }) {
     { time: '16:00', status: 'available' },
     { time: '17:00', status: 'blocked' },
   ];
-  function renderTableHeader() {
+
+  function renderTableHeader(data = schedule) {
     if (date != null) {
-      let header = Object.keys(schedule[0]);
+      let header = Object.keys(data[0]);
       return header.map((key, index) => {
         return <th key={index}>{key.toUpperCase()}</th>;
       });
     }
   }
-  function renderTableData() {
+
+  function renderTableData(data = schedule) {
     if (date != null) {
-      return schedule.map((slot, index) => {
+      return (data = schedule.map((slot, index) => {
         const { time, status } = slot;
         return (
           <tr key={index}>
@@ -30,7 +32,7 @@ export default function DailySchedule({ date }) {
             <td>{status}</td>
           </tr>
         );
-      });
+      }));
     }
   }
 
