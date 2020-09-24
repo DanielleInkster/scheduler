@@ -4,7 +4,7 @@ import DailySchedule from './DailySchedule';
 
 const testDate = new Date('Septemer 23, 2020');
 
-describe('table', () => {
+describe('date', () => {
   it('renders the date', () => {
     const wrapper = mount(<DailySchedule date={testDate} />);
     const date = wrapper.find('#date');

@@ -4,6 +4,7 @@ export default function Form({ date, time }) {
   return (
     <div>
       <center>
+        <h3>Request for Appointment</h3>
         <p>Date: {date}</p>
         <p>Time: {time}</p>
         <form>
