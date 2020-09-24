@@ -1,15 +1,10 @@
 import React from 'react';
-import Popup from 'reactjs-popup';
+import PopupExample from './Popup';
 
 export default function DailySchedule({ date }) {
-  const PopupExample = (date) => (
-    <Popup trigger={<button> Trigger</button>} position="right center">
-      <div>{displayDate()}</div>
-    </Popup>
-  );
   const schedule = [
     { time: '9:00', status: 'blocked' },
-    { time: '10:00', status: 'available', button: PopupExample() },
+    { time: '10:00', status: 'available', button: <PopupExample /> },
     { time: '11:00', status: 'available' },
     { time: '12:00', status: 'blocked' },
     { time: '13:00', status: 'available' },
