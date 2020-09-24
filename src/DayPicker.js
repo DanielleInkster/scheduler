@@ -17,7 +17,7 @@ export default function Calendar() {
           ? `${date.toISOString().substring(0, 10)}`
           : 'Please select a day for an appointment.'}
       </p>
-      <DailySchedule />
+      <DailySchedule date={date} />
     </div>
   );
 }
