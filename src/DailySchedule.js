@@ -22,10 +22,10 @@ export default function DailySchedule({ date }) {
   }
   function renderTableData() {
     if (date != null) {
-      return schedule.map((slot) => {
+      return schedule.map((slot, index) => {
         const { time, status } = slot;
         return (
-          <tr key={time}>
+          <tr key={index}>
             <td>{time}</td>
             <td>{status}</td>
           </tr>
