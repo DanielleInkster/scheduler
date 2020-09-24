@@ -1,17 +1,17 @@
 import React from 'react';
-import PopupExample from './Popup';
+import FormPopup from './Popup';
 
 export default function DailySchedule({ date }) {
   const schedule = [
-    { time: '9:00', status: 'blocked' },
-    { time: '10:00', status: 'available' },
-    { time: '11:00', status: 'available' },
-    { time: '12:00', status: 'blocked' },
-    { time: '13:00', status: 'available' },
-    { time: '14:00', status: 'available' },
-    { time: '15:00', status: 'available' },
-    { time: '16:00', status: 'available' },
-    { time: '17:00', status: 'blocked' },
+    { time: '9:00 AM', status: 'unavailable' },
+    { time: '10:00 AM', status: 'available' },
+    { time: '11:00 AM', status: 'available' },
+    { time: '12:00 PM', status: 'unavailable' },
+    { time: '13:00 PM', status: 'available' },
+    { time: '14:00 PM', status: 'available' },
+    { time: '15:00 PM', status: 'available' },
+    { time: '16:00 PM', status: 'available' },
+    { time: '17:00 PM', status: 'unavailable' },
   ];
 
   function renderTableHeader(data = schedule) {
@@ -33,7 +33,7 @@ export default function DailySchedule({ date }) {
             <td>{status}</td>
             {status === 'available' && (
               <td>
-                <PopupExample date={displayDate()} time={time} />
+                <FormPopup date={displayDate()} time={time} />
               </td>
             )}
           </tr>
