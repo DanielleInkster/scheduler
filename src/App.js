@@ -10,6 +10,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact match path="/" render={() => { return <DayPicker />; }} />
+        <Route exact match path="/:date" render={() => { return <DayPicker />; }} />
         <Route path="*" render={() => { return( <div>Page Not Found</div>)}} />
       </Switch>
       </Router>
