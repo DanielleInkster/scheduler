@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Table from '../containers/Table';
+import { getAppts } from '../api';
 
 export default function DailySchedule({ date }) {
+  /* eslint-disable */
+  const [appts, setAppts] = useState([]);
+  /* eslint-enable */
   const schedule = [
     { time: '9:00 AM', status: 'unavailable' },
     { time: '10:00 AM', status: 'available' },
@@ -13,6 +17,14 @@ export default function DailySchedule({ date }) {
     { time: '4:00 PM', status: 'available' },
     { time: '5:00 PM', status: 'unavailable' },
   ];
+
+  useEffect(() => {
+    const fetchAppts = async () => {
+      const appts = await getAppts();
+      setAppts(appts);
+    };
+    fetchAppts();
+  });
 
   function displayDate(day = date) {
     if (day === null) {
