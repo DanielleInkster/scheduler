@@ -1,1 +1,2 @@
-export const getAppts = () => fetch('http://localhost:4000/').then((res) => res.json());
+export const getAppts = ({ date }) =>
+  fetch(`http://localhost:4000/${date}`).then((res) => res.json());
