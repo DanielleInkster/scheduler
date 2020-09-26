@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const db = require('./db');
-const Appointment = require('./models/Appointments');
+const Appointments = require('./models/Appointments');
 
 const app = express();
 const apiPort = 4000;
@@ -15,7 +15,18 @@ app.use(bodyParser.json());
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.get('/', (req, res) => {
-  Appointment.find((err, appt) => {
+  Appointments.find((err, appt) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(appt);
+    }
+  });
+});
+
+app.get('/:date', (req, res) => {
+  var day = req.params.date;
+  Appointments.find({ date: `${day}` }, (err, appt) => {
     if (err) {
       console.log(err);
     } else {
@@ -25,7 +36,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/create', (req, res) => {
-  const appt = new Appointment({
+  const appt = new Appointments({
     date: req.body.date,
     time: req.body.time,
     name: req.body.name,
@@ -45,7 +56,7 @@ app.post('/create', (req, res) => {
 });
 
 app.delete('/deleteAll', (req, res) => {
-  Appointment.remove((err, records) => {
+  Appointments.remove((err, records) => {
     if (err) {
       return res.status(400).json({ success: false, error: err });
     } else {
