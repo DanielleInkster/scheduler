@@ -3,7 +3,9 @@ import Table from '../containers/Table';
 import { getAppts } from '../api';
 
 export default function DailySchedule({ date }) {
+  /* eslint-disable */
   const [appts, setAppts] = useState([]);
+  /* eslint-enable */
   const schedule = [
     { time: '9:00 AM', status: 'unavailable' },
     { time: '10:00 AM', status: 'available' },
