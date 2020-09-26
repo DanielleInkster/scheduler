@@ -6,7 +6,7 @@ const db = require('./db');
 const Appointment = require('./models/Appointments');
 
 const app = express();
-const apiPort = 3000;
+const apiPort = 4000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
