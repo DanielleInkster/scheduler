@@ -45,7 +45,7 @@ app.post('/create', (req, res) => {
 });
 
 app.delete('/deleteAll', (req, res) => {
-  db.remove((err, records) => {
+  Appointment.remove((err, records) => {
     if (err) {
       return res.status(400).json({ success: false, error: err });
     } else {
