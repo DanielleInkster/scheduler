@@ -44,4 +44,14 @@ app.post('/create', (req, res) => {
     });
 });
 
+app.delete('/deleteAll', (req, res) => {
+  db.remove((err, records) => {
+    if (err) {
+      return res.status(400).json({ success: false, error: err });
+    } else {
+      return res.status(200).json({ success: true });
+    }
+  });
+});
+
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));
