@@ -7,7 +7,9 @@ configure({ adapter: new Adapter() });
 const testDate = new Date('Septemer 23, 2020');
 
 jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'), 
+  /* eslint-disable */
+  ...jest.requireActual('react-router-dom'),
+  useParams: () => ({
     date: '2020923',
   }),
   useRouteMatch: () => ({ url: '/date' }),
