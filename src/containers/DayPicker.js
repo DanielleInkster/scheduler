@@ -18,15 +18,22 @@ export default function Calendar() {
     }
   }
 
-  function handleDayClick(day) {
-    selectDate(day);
+  function handleDayClick(day, modifiers = {}) {
+    if (modifiers.disabled) {
+      return;
+    }
+    selectDate(modifiers.selected ? undefined : day);
     const dbDay = dbDate(day);
     history.push(`/${dbDay}`);
   }
 
   return (
     <div>
-      <DayPicker selectedDays={date} onDayClick={handleDayClick} />
+      <DayPicker
+        selectedDays={date}
+        onDayClick={handleDayClick}
+        disabledDays={[{ daysOfWeek: [0, 6] }, { before: new Date() }]}
+      />
       <DailySchedule date={date} />
     </div>
   );
