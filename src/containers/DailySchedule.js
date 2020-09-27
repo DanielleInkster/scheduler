@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Table from '../containers/Table';
 import { getAppts } from '../api';
+import { useParams } from 'react-router-dom';
 
 export default function DailySchedule({ date }) {
   /* eslint-disable */
-  const [appts, setAppts] = useState([]);
+  const [items, setItems] = useState([]);
+  const day = useParams()
   /* eslint-enable */
   const schedule = [
     { time: '9:00 AM', status: 'unavailable' },
@@ -19,27 +21,33 @@ export default function DailySchedule({ date }) {
   ];
 
   useEffect(() => {
-    const fetchAppts = async () => {
-      const appts = await getAppts();
-      setAppts(appts);
-    };
-    fetchAppts();
-  });
-
-  function displayDate(day = date) {
-    if (day === null) {
-      return 'Please select a date for an appointment.';
-    } else {
-      return day.toDateString();
+    if (day !== null) {
+      const fetchAppts = async () => {
+        const appts = await getAppts(day);
+        setItems(appts);
+      };
+      fetchAppts();
     }
+  }, [day]);
+
+  function createNewSchedule() {
+    const newSchedule = [...schedule];
+    newSchedule.map((slot) =>
+      items.map((item) => {
+        if (slot.time === item.time) {
+          slot.status = 'pending';
+        }
+        return newSchedule;
+      }),
+    );
   }
 
   return (
     <div>
-      <p id="date">{`${displayDate()}`}</p>
-      <center>
-        <Table date={displayDate()} data={schedule} />
-      </center>
+      {date === null && <p id="date"> Please select a date. </p>}
+      {date !== null && <p id="date">{date.toDateString()}</p>}
+      {items.length > 0 && createNewSchedule()}
+      <center>{date !== null && <Table date={date.toDateString()} data={schedule} />}</center>
     </div>
   );
 }
