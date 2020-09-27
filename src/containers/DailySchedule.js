@@ -28,22 +28,13 @@ export default function DailySchedule({ date }) {
       };
       fetchAppts();
     }
-  });
-
-  function displayDate(day = date) {
-    if (day === null) {
-      return 'Please select a date for an appointment.';
-    } else {
-      return day.toDateString();
-    }
-  }
+  }, [day]);
 
   return (
     <div>
-      <p id="date">{`${displayDate()}`}</p>
-      <center>
-        <Table date={displayDate()} data={schedule} />
-      </center>
+      {date === null && <p id="date"> Please select a date. </p>}
+      {date !== null && <p id="date">{date.toDateString()}</p>}
+      <center>{date !== null && <Table date={date.toDateString()} data={schedule} />}</center>
     </div>
   );
 }
