@@ -3,9 +3,9 @@ import Popup from 'reactjs-popup';
 import Form from './Form';
 import 'reactjs-popup/dist/index.css';
 
-export default function FormPopup({ date, time }) {
+export default function FormPopup({ date, time, title }) {
   return (
-    <Popup trigger={<button> Book this slot </button>} position="right center">
+    <Popup trigger={<button>{title}</button>} position="right center">
       <div>
         <Form date={date} time={time} />
       </div>
