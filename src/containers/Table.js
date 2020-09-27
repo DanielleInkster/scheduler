@@ -21,7 +21,12 @@ export default function Table({ date, data }) {
             <td>{status}</td>
             {status === 'available' && (
               <td>
-                <FormPopup date={date} time={time} />
+                <FormPopup date={date} time={time} title={'Request this time'} />
+              </td>
+            )}
+            {status === 'pending' && (
+              <td>
+                <FormPopup date={date} time={time} title={'Edit Request'} />
               </td>
             )}
           </tr>
