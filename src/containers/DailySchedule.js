@@ -20,6 +20,8 @@ export default function DailySchedule({ date }) {
     { time: '5:00 PM', status: 'unavailable' },
   ];
 
+  const newSchedule = createNewSchedule();
+
   useEffect(() => {
     if (day !== null) {
       const fetchAppts = async () => {
@@ -31,12 +33,13 @@ export default function DailySchedule({ date }) {
   }, [day]);
 
   function createNewSchedule() {
-    const oldSchedule = [...schedule];
-    oldSchedule.map((slot) =>
+    const newSchedule = [...schedule];
+    newSchedule.map((slot) =>
       items.map((item) => {
         if (slot.time === item.time) {
           slot.status = 'pending';
         }
+        return newSchedule;
       }),
     );
   }
@@ -45,7 +48,6 @@ export default function DailySchedule({ date }) {
     <div>
       {date === null && <p id="date"> Please select a date. </p>}
       {date !== null && <p id="date">{date.toDateString()}</p>}
-      {items.length > 0 && createNewSchedule()}
       <center>{date !== null && <Table date={date.toDateString()} data={schedule} />}</center>
     </div>
   );
