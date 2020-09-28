@@ -4,7 +4,7 @@ import { createAppt } from '../api';
 import { useHistory } from 'react-router-dom';
 import 'react-router-modal/css/react-router-modal.css';
 
-export default function Modal1({ date, time }) {
+export default function CreateAppt({ date, time }) {
   const history = useHistory();
 
   const onSubmit = async (data) => {
