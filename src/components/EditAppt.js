@@ -19,7 +19,7 @@ export default function EditAppt() {
 
   const onSubmit = async (data) => {
     await updateAppt(data, params.date, params.time);
-    history.push('/');
+    history.push(`/${params.date}/ViewAppointment/${params.time}`);
   };
 
   return <div>{appt !== '' && <Form appt={appt} onSubmit={onSubmit} />}</div>;
