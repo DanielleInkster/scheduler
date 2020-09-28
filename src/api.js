@@ -14,8 +14,8 @@ export const createAppt = (appt) =>
   });
 
 export const updateAppt = (appt, date, time) =>
-  fetch(`http://localhost:4000/update/${date}/${time}`, {
-    method: 'POST',
+  fetch(`http://localhost:4000/${date}/${time}`, {
+    method: 'PUT',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ export const updateAppt = (appt, date, time) =>
   });
 
 export const deleteAppt = (date, time) =>
-  fetch(`http://localhost:4000/${date}/${time}`, {
+  fetch(`http://localhost:4000/delete/${date}/${time}`, {
     method: 'DELETE',
     headers: {
       Accept: 'application/json',

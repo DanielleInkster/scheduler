@@ -7,9 +7,11 @@ export default function Form({ appt, onSubmit, date, time }) {
 
   const { register, handleSubmit } = useForm({
     defaultValues: {
-      fname: appt ? appt.name : '',
-      projname: appt ? appt.project_name : '',
-      projdesc: appt ? appt.project_description : '',
+      date: appt ? appt.date : '',
+      date: appt ? appt.time : '',
+      name: appt ? appt.name : '',
+      project_name: appt ? appt.project_name : '',
+      project_description: appt ? appt.project_description : '',
       email: appt ? appt.email : '',
     },
   });
@@ -22,36 +24,34 @@ export default function Form({ appt, onSubmit, date, time }) {
     <div>
       <center>
         <h3>Request for Appointment</h3>
-        <p id="date">Date: {appt ? appt.date : date}</p>
-        <p id="time">Time: {appt ? appt.time : time}</p>
+        <p>Date: {appt ? appt.date : date}</p>
+        <p>Time: {appt ? appt.time : time}</p>
         <form onSubmit={submitHandler}>
-          <input type="hidden" id="date_id" value={params.date} />
-          <input type="hidden" id="time" value={params.time} />
-          <label htmlFor="fname">Full name:</label>
+          <label htmlFor="name">Full name:</label>
           <input
             type="text"
-            id="fname"
-            name="fname"
+            id="name"
+            name="name"
             ref={register}
             placeholder="Ex: 'Peter Parker'"
           />
           <br />
           <br />
-          <label htmlFor="projname">Project name:</label>
+          <label htmlFor="project_name">Project name:</label>
           <input
             type="text"
-            id="projname"
-            name="projname"
+            id="project_name"
+            name="project_name"
             ref={register}
             placeholder="Ex: 'Best Project'"
           />
           <br />
           <br />
-          <label htmlFor="projdesc">Project description:</label>
+          <label htmlFor="project_description">Project description:</label>
           <input
             type="text"
-            id="projdesc"
-            name="projdesc"
+            id="project_description"
+            name="project_description"
             maxLength="1000"
             ref={register}
             placeholder="Maximum of 1000 characters"
@@ -68,7 +68,9 @@ export default function Form({ appt, onSubmit, date, time }) {
           />
           <br />
           <br />
-          <input type="submit" value="Submit"></input>
+          <button type="submit" value="Submit">
+            Submit
+          </button>
         </form>
       </center>
     </div>
