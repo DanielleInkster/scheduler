@@ -22,8 +22,8 @@ export default function Form({ appt, onSubmit, date, time }) {
     <div>
       <center>
         <h3>Request for Appointment</h3>
-        <p id="date">Date: {date}</p>
-        <p id="time">Time: {time}</p>
+        <p id="date">Date: {appt ? appt.date : date}</p>
+        <p id="time">Time: {appt ? appt.time : time}</p>
         <form onSubmit={submitHandler}>
           <input type="hidden" id="date_id" value={params.date} />
           <input type="hidden" id="time" value={params.time} />
