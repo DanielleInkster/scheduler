@@ -25,8 +25,20 @@ app.get('/', (req, res) => {
 });
 
 app.get('/:date', (req, res) => {
-  var day = req.params.date;
-  Appointments.find({ date: `${day}` }, (err, appt) => {
+  const day = req.params.date;
+  Appointments.find({ date_id: `${day}` }, (err, appt) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(appt);
+    }
+  });
+});
+
+app.get('/:date/:time', (req, res) => {
+  const day = req.params.date;
+  const time = req.params.time;
+  Appointments.find({ date_id: `${day}`, time_id: `${time}` }, (err, appt) => {
     if (err) {
       console.log(err);
     } else {
@@ -37,6 +49,8 @@ app.get('/:date', (req, res) => {
 
 app.post('/create', (req, res) => {
   const appt = new Appointments({
+    date_id: req.body.date_id,
+    time_id: req.body.time_id,
     date: req.body.date,
     time: req.body.time,
     name: req.body.name,
