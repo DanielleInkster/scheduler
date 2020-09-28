@@ -2,7 +2,6 @@ import React from 'react';
 import { ModalLink } from 'react-router-modal';
 import { useParams, Link } from 'react-router-dom';
 import FormPopup from '../components/Popup';
-import Request from '../components/Request';
 
 export default function Table({ date, data }) {
   let params = useParams();

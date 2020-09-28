@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 export default function DailySchedule({ date }) {
   /* eslint-disable */
   const [items, setItems] = useState([]);
-  const day = useParams()
+  const params = useParams()
   /* eslint-enable */
   const schedule = [
     { time: '9:00 AM', status: 'unavailable' },
@@ -21,14 +21,14 @@ export default function DailySchedule({ date }) {
   ];
 
   useEffect(() => {
-    if (day !== null) {
+    if (params.date !== null) {
       const fetchAppts = async () => {
-        const appts = await getAppts(day);
+        const appts = await getAppts(params.date);
         setItems(appts);
       };
       fetchAppts();
     }
-  }, [day]);
+  }, [params.date]);
 
   function createNewSchedule() {
     const newSchedule = [...schedule];
