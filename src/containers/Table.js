@@ -1,7 +1,15 @@
 import React from 'react';
+import { ModalLink } from 'react-router-modal';
+import { useParams } from 'react-router-dom';
 import FormPopup from '../components/Popup';
 
 export default function Table({ date, data }) {
+  let params = useParams();
+
+  function getTime(time) {
+    return time.replace(/[: ]+/g, '');
+  }
+
   function renderTableHeader(schedule = data) {
     if (date !== 'Please select a date for an appointment.') {
       let header = Object.keys(schedule[0]);
@@ -21,14 +29,15 @@ export default function Table({ date, data }) {
             <td>{status}</td>
             {status === 'available' && (
               <td>
-                <FormPopup date={date} time={time} title={'Request this time'} />
+                <ModalLink
+                  path={`${params.date}/CreateAppointment/${getTime(time)}`}
+                  component={FormPopup}
+                >
+                  Request this time
+                </ModalLink>
               </td>
             )}
-            {status === 'pending' && (
-              <td>
-                <FormPopup date={date} time={time} title={'Edit Request'} />
-              </td>
-            )}
+            {status === 'pending' && <td>Hello</td>}
           </tr>
         );
       }));
