@@ -11,6 +11,14 @@ const testSched = [
   { time: '11:00 AM', status: 'available' },
 ];
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: () => ({
+    date: '2020923',
+  }),
+  useRouteMatch: () => ({ url: '/date' }),
+}));
+
 it('renders without crashing', () => {
   shallow(<Table date={testDate} data={testSched} />);
 });

@@ -1,7 +1,8 @@
 import React from 'react';
 import { ModalLink } from 'react-router-modal';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import FormPopup from '../components/Popup';
+import Request from '../components/Request';
 
 export default function Table({ date, data }) {
   let params = useParams();
@@ -37,7 +38,11 @@ export default function Table({ date, data }) {
                 </ModalLink>
               </td>
             )}
-            {status === 'pending' && <td>Hello</td>}
+            {status === 'pending' && (
+              <td>
+                <Link to={`${params.date}/ViewAppointment/${getTime(time)}`}>View Request</Link>
+              </td>
+            )}
           </tr>
         );
       }));
