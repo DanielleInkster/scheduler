@@ -69,6 +69,18 @@ app.post('/create', (req, res) => {
     });
 });
 
+app.delete('/:date/:time', (req, res) => {
+  const day = req.params.date;
+  const time = req.params.time;
+  Appointments.findOneAndDelete({ date_id: `${day}`, time_id: `${time}` }, (err, records) => {
+    if (err) {
+      return res.status(400).json({ success: false, error: err });
+    } else {
+      return res.status(200).json({ success: true });
+    }
+  });
+});
+
 app.delete('/deleteAll', (req, res) => {
   Appointments.remove((err, records) => {
     if (err) {

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getAppt } from '../api';
+import { useParams, useHistory } from 'react-router-dom';
+import { getAppt, deleteAppt } from '../api';
 
 export default function Request() {
   const [request, setRequest] = useState('');
   const params = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     const fetchAppt = async () => {
@@ -13,6 +14,11 @@ export default function Request() {
     };
     fetchAppt();
   });
+
+  function removeAppt() {
+    deleteAppt(params.date, params.time);
+    history.push('/');
+  }
 
   return (
     <div>
@@ -23,6 +29,7 @@ export default function Request() {
       <p>{request.project_name}</p>
       <p>{request.project_description}</p>
       <p>{request.email}</p>
+      <button onClick={removeAppt}>Delete Request</button>
     </div>
   );
 }
