@@ -1,14 +1,13 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 
-export default function Form({ appt, onSubmit, date, time }) {
+export default function Form({ appt, onSubmit }) {
   const params = useParams();
+  const location = useLocation();
 
   const { register, handleSubmit } = useForm({
     defaultValues: {
-      date: appt ? appt.date : '',
-      date: appt ? appt.time : '',
       name: appt ? appt.name : '',
       project_name: appt ? appt.project_name : '',
       project_description: appt ? appt.project_description : '',
@@ -23,10 +22,14 @@ export default function Form({ appt, onSubmit, date, time }) {
   return (
     <div>
       <center>
-        <h3>Request for Appointment</h3>
-        <p>Date: {appt ? appt.date : date}</p>
-        <p>Time: {appt ? appt.time : time}</p>
         <form onSubmit={submitHandler}>
+          <input type="hidden" name="date_id" id="date_id" ref={register} value={params.date} />
+          <input type="hidden" name="time_id" id="time_id" ref={register} value={params.time} />
+          <input type="hidden" name="date" id="date" ref={register} value={location.state.date} />
+          <input type="hidden" name="time" id="time" ref={register} value={location.state.time} />
+          <h3>Request for Appointment</h3>
+          <p>Date: {appt ? appt.date : location.state.date}</p>
+          <p>Time: {appt ? appt.time : location.state.time}</p>
           <label htmlFor="name">Full name:</label>
           <input
             type="text"
