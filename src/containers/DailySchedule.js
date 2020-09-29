@@ -52,14 +52,23 @@ export default function DailySchedule({ date }) {
             <b> Please select a date. </b>
           </p>
         )}
-        {date !== null && (
+        {date === undefined && (
+          <p id="date">
+            <b> Please select a date. </b>
+          </p>
+        )}
+        {date !== null && date !== undefined && (
           <p id="date">
             <b>{date.toDateString()}</b>
           </p>
         )}
       </Typography>
-      {items.length > 0 && createNewSchedule()}
-      <center>{date !== null && <Table date={date.toDateString()} data={schedule} />}</center>
+      {items.length > 0 && date !== undefined && createNewSchedule()}
+      <center>
+        {date !== null && date !== undefined && (
+          <Table date={date.toDateString()} data={schedule} />
+        )}
+      </center>
     </div>
   );
 }
