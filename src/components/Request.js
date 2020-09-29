@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { getAppt, deleteAppt } from '../api';
+import { ModalLink } from 'react-router-modal';
 
 export default function Request() {
   const [appt, setRequest] = useState('');
@@ -28,9 +29,7 @@ export default function Request() {
   function loadingError() {
     return (
       <div>
-        <p>
-          Uh-oh! It's not you, it's us! Something went wrong loading this page. Please try again.
-        </p>
+        <p>Uh-oh! Something went wrong loading this page. Please try again.</p>
         <button onClick={history.push('/')}>Go Home </button>
       </div>
     );
