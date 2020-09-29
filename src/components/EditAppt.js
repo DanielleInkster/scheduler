@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Form from './Form';
 import { useParams, useHistory } from 'react-router-dom';
 import { getAppt, updateAppt } from '../api';
-import 'react-router-modal/css/react-router-modal.css';
+import 'fontsource-roboto';
 
 export default function EditAppt() {
   let params = useParams();
@@ -19,7 +19,7 @@ export default function EditAppt() {
 
   const onSubmit = async (data) => {
     await updateAppt(data, params.date, params.time);
-    window.alert('Appointment updated successfully!');
+    window.alert('Request updated successfully!');
     history.push(`/${params.date}/ViewAppointment/${params.time}`);
   };
 
