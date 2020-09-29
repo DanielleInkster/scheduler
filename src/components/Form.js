@@ -1,11 +1,30 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams, useLocation } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import { Container } from '@material-ui/core';
+import 'react-router-modal/css/react-router-modal.css';
 import 'fontsource-roboto';
+
+const styles = {
+  paper: {
+    padding: '1vw',
+    paddingBottom: '2vw',
+    textAlign: 'center',
+    color: '#FFFFFF',
+    whiteSpace: 'wrap',
+    background: '#6573c3',
+    margin: '1vh',
+    minHeight: 132,
+    justifyContent: 'center',
+  },
+};
+const useStyles = makeStyles(styles);
 
 export default function Form({ appt, onSubmit, date, time }) {
   const params = useParams();
   const location = useLocation();
+  const classes = useStyles();
 
   const { register, handleSubmit } = useForm({
     defaultValues: {
@@ -22,7 +41,7 @@ export default function Form({ appt, onSubmit, date, time }) {
 
   return (
     <div>
-      <center>
+      <Container className={classes.paper}>
         <form onSubmit={submitHandler}>
           {console.log(location)}
           <input type="hidden" name="date_id" id="date_id" ref={register} value={params.date} />
@@ -57,9 +76,10 @@ export default function Form({ appt, onSubmit, date, time }) {
             type="text"
             id="project_description"
             name="project_description"
-            maxLength="1000"
+            maxLength="250"
+            minHeight="25%"
             ref={register({ required: true })}
-            placeholder="Maximum of 1000 characters"
+            placeholder="Maximum of 250 characters"
           />
           <br />
           <br />
@@ -78,7 +98,7 @@ export default function Form({ appt, onSubmit, date, time }) {
           </button>
         </form>
         <h5>To cancel, click outside of the pop-up window.</h5>
-      </center>
+      </Container>
     </div>
   );
 }

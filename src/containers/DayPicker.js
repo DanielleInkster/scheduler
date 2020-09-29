@@ -19,6 +19,14 @@ const styles = {
     background: '#6573c3',
     margin: '1vh',
   },
+  whitepaper: {
+    padding: '1vw',
+    paddingBottom: '2vw',
+    textAlign: 'center',
+    background: '#FFFFFF',
+    whiteSpace: 'wrap',
+    margin: '1vh',
+  },
 };
 const useStyles = makeStyles(styles);
 
@@ -49,18 +57,20 @@ export default function Calendar() {
   return (
     <div className={classes.root}>
       <Header />
-      <Grid container spacing={2} direction="row" justify="flex-end">
+      <Grid container spacing={2} direction="row" justify="space-evenly">
         <Grid item xs={5}>
           <Paper className={classes.paper}>
             <Intro />
           </Paper>
         </Grid>
         <Grid item xs={3}>
-          <DayPicker
-            selectedDays={date}
-            onDayClick={handleDayClick}
-            disabledDays={[{ daysOfWeek: [0, 6] }, { before: new Date() }]}
-          />
+          <Paper className={classes.whitepaper}>
+            <DayPicker
+              selectedDays={date}
+              onDayClick={handleDayClick}
+              disabledDays={[{ daysOfWeek: [0, 6] }, { before: new Date() }]}
+            />
+          </Paper>
         </Grid>
         <Grid item xs={4}>
           <Paper className={classes.paper}>

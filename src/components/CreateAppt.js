@@ -3,7 +3,6 @@ import Form from './Form';
 import { createAppt } from '../api';
 import { useHistory, useParams } from 'react-router-dom';
 import 'fontsource-roboto';
-import 'react-router-modal/css/react-router-modal.css';
 
 export default function CreateAppt({ date, time }) {
   const history = useHistory();
