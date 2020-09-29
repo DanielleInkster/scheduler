@@ -1,6 +1,6 @@
 import React from 'react';
-import { useParams, useHistory, Link } from 'react-router-dom';
-import { Button, Container, Typography, Table, TableRow } from '@material-ui/core';
+import { useParams, Link } from 'react-router-dom';
+import { Container, Typography, Table, TableRow } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import 'fontsource-roboto';
 import { fontFamily, color } from '@material-ui/system';
@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TableSchedule({ date, data }) {
   let params = useParams();
-  let history = useHistory();
   const classes = useStyles();
 
   function getTime(time) {

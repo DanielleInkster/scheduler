@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import { AppBar } from '@material-ui/core';
@@ -32,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Header() {
+  const history = useHistory();
   const classes = useStyles();
 
   return (
@@ -41,7 +43,13 @@ export default function Header() {
         <Typography className={classes.title} variant="h4" noWrap>
           MyFakeBusiness
         </Typography>
-        <IconButton aria-label="home" className={classes.icon}>
+        <IconButton
+          aria-label="home"
+          className={classes.icon}
+          onClick={() => {
+            history.push('/');
+          }}
+        >
           <HomeIcon fontSize="small" />
         </IconButton>
       </AppBar>

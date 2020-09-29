@@ -6,14 +6,13 @@ import Intro from '../components/Intro';
 import DayPicker from 'react-day-picker';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
-import { sizing } from '@material-ui/system';
-import { Typography } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import 'react-day-picker/lib/style.css';
 
 const styles = {
   paper: {
     padding: '1vw',
+    paddingBottom: '2vw',
     textAlign: 'center',
     color: '#FFFFFF',
     whiteSpace: 'wrap',
