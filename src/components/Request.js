@@ -25,10 +25,6 @@ export default function Request() {
     history.push(`/${params.date}/EditAppointment/${params.time}`, { appt: appt });
   }
 
-  function goHome() {
-    history.push('/');
-  }
-
   return appt ? (
     <div>
       <h2> Request for Appointment</h2>

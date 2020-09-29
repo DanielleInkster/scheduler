@@ -32,10 +32,10 @@ export default function Form({ appt, onSubmit }) {
           <p>Time: {appt ? appt.time : location.state.time}</p>
           <label htmlFor="name">Full name:</label>
           <input
-            type="text"
+            type="name"
             id="name"
             name="name"
-            ref={register}
+            ref={register({ required: true })}
             placeholder="Ex: 'Peter Parker'"
           />
           <br />
@@ -45,7 +45,7 @@ export default function Form({ appt, onSubmit }) {
             type="text"
             id="project_name"
             name="project_name"
-            ref={register}
+            ref={register({ required: true })}
             placeholder="Ex: 'Best Project'"
           />
           <br />
@@ -56,17 +56,17 @@ export default function Form({ appt, onSubmit }) {
             id="project_description"
             name="project_description"
             maxLength="1000"
-            ref={register}
+            ref={register({ required: true })}
             placeholder="Maximum of 1000 characters"
           />
           <br />
           <br />
           <label htmlFor="email">Email Address:</label>
           <input
-            type="text"
+            type="email"
             id="email"
             name="email"
-            ref={register}
+            ref={register({ required: true })}
             placeholder="Ex: 'peter.parker@marvel.com'"
           />
           <br />
