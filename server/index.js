@@ -5,12 +5,13 @@ const mongoose = require('mongoose');
 const Appointments = require('./models/Appointments');
 const nodemailer = require('nodemailer');
 const sendgridTransport = require('nodemailer-sendgrid-transport');
+const KEY = process.env.SENDGRID_API_KEY;
 //
 
 const transporter = nodemailer.createTransport(
   sendgridTransport({
     auth: {
-      api_key: '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',
+      api_key: KEY,
     },
   }),
 );
