@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Table from '../containers/Table';
 import { getAppts } from '../api';
 import { useParams } from 'react-router-dom';
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import 'fontsource-roboto';
 
 export default function DailySchedule({ date }) {
@@ -46,12 +46,20 @@ export default function DailySchedule({ date }) {
 
   return (
     <div>
-      <Grid item>
-        {date === null && <p id="date"> Please select a date. </p>}
-        {date !== null && <p id="date">{date.toDateString()}</p>}
-        {items.length > 0 && createNewSchedule()}
-        <center>{date !== null && <Table date={date.toDateString()} data={schedule} />}</center>
-      </Grid>
+      <Typography variant="h6">
+        {date === null && (
+          <p id="date">
+            <b> Please select a date. </b>
+          </p>
+        )}
+        {date !== null && (
+          <p id="date">
+            <b>{date.toDateString()}</b>
+          </p>
+        )}
+      </Typography>
+      {items.length > 0 && createNewSchedule()}
+      <center>{date !== null && <Table date={date.toDateString()} data={schedule} />}</center>
     </div>
   );
 }

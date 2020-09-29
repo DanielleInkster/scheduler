@@ -13,7 +13,7 @@ import 'react-day-picker/lib/style.css';
 
 const styles = {
   paper: {
-    padding: '2vw',
+    padding: '1vw',
     textAlign: 'center',
     color: '#FFFFFF',
     whiteSpace: 'wrap',

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useParams, useLocation } from 'react-router-dom';
 import 'fontsource-roboto';
 
-export default function Form({ appt, onSubmit }) {
+export default function Form({ appt, onSubmit, date, time }) {
   const params = useParams();
   const location = useLocation();
 
@@ -24,10 +24,11 @@ export default function Form({ appt, onSubmit }) {
     <div>
       <center>
         <form onSubmit={submitHandler}>
+          {console.log(location)}
           <input type="hidden" name="date_id" id="date_id" ref={register} value={params.date} />
           <input type="hidden" name="time_id" id="time_id" ref={register} value={params.time} />
-          <input type="hidden" name="date" id="date" ref={register} value={location.state.date} />
-          <input type="hidden" name="time" id="time" ref={register} value={location.state.time} />
+          <input type="hidden" name="date" id="date" ref={register} value={date} />
+          <input type="hidden" name="time" id="time" ref={register} value={time} />
           <h3>Request for Appointment</h3>
           <p>Date: {appt ? appt.date : location.state.date}</p>
           <p>Time: {appt ? appt.time : location.state.time}</p>
