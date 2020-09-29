@@ -15,8 +15,9 @@ export default function Request() {
     fetchAppt();
   });
 
-  function removeAppt() {
-    deleteAppt(params.date, params.time);
+  async function removeAppt() {
+    await deleteAppt(params.date, params.time);
+    await window.alert('Appointment cancelled. No other action is required');
     history.push('/');
   }
 
@@ -24,7 +25,11 @@ export default function Request() {
     history.push(`/${params.date}/EditAppointment/${params.time}`, { appt: appt });
   }
 
-  return (
+  function goHome() {
+    history.push('/');
+  }
+
+  return appt ? (
     <div>
       <h2> Request for Appointment</h2>
       <h3>{appt.date}</h3>
@@ -36,5 +41,7 @@ export default function Request() {
       <button onClick={editAppt}>Edit Request</button>
       <button onClick={removeAppt}>Delete Request</button>
     </div>
+  ) : (
+    <div>Loading...</div>
   );
 }
