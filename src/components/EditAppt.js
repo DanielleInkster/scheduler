@@ -19,6 +19,7 @@ export default function EditAppt() {
 
   const onSubmit = async (data) => {
     await updateAppt(data, params.date, params.time);
+    window.alert('Appointment updated successfully!');
     history.push(`/${params.date}/ViewAppointment/${params.time}`);
   };
 
