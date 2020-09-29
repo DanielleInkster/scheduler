@@ -46,8 +46,8 @@ export default function Form({ appt, onSubmit, date, time }) {
           {console.log(location)}
           <input type="hidden" name="date_id" id="date_id" ref={register} value={params.date} />
           <input type="hidden" name="time_id" id="time_id" ref={register} value={params.time} />
-          <input type="hidden" name="date" id="date" ref={register} value={date} />
-          <input type="hidden" name="time" id="time" ref={register} value={time} />
+          <input type="hidden" name="date" id="date" ref={register} value={location.state.date} />
+          <input type="hidden" name="time" id="time" ref={register} value={location.state.time} />
           <h3>Request for Appointment</h3>
           <p>Date: {appt ? appt.date : location.state.date}</p>
           <p>Time: {appt ? appt.time : location.state.time}</p>
