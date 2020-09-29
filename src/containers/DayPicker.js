@@ -18,6 +18,7 @@ const styles = {
     whiteSpace: 'wrap',
     background: '#6573c3',
     margin: '1vh',
+    borderRadius: '5%',
   },
   whitepaper: {
     padding: '1vw',
@@ -26,6 +27,7 @@ const styles = {
     background: '#FFFFFF',
     whiteSpace: 'wrap',
     margin: '1vh',
+    borderRadius: '5%',
   },
 };
 const useStyles = makeStyles(styles);

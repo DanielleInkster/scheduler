@@ -2,21 +2,19 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams, useLocation } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container } from '@material-ui/core';
+import { Container, Button, Typography } from '@material-ui/core';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import 'react-router-modal/css/react-router-modal.css';
 import 'fontsource-roboto';
 
 const styles = {
   paper: {
-    padding: '1vw',
-    paddingBottom: '2vw',
+    padding: '2vw',
     textAlign: 'center',
     color: '#FFFFFF',
     whiteSpace: 'wrap',
     background: '#6573c3',
-    margin: '1vh',
-    minHeight: 132,
-    justifyContent: 'center',
+    borderRadius: '1%',
   },
 };
 const useStyles = makeStyles(styles);
@@ -43,7 +41,6 @@ export default function Form({ appt, onSubmit, date, time }) {
     <div>
       <Container className={classes.paper}>
         <form onSubmit={submitHandler}>
-          {console.log(location)}
           <input type="hidden" name="date_id" id="date_id" ref={register} value={params.date} />
           <input type="hidden" name="time_id" id="time_id" ref={register} value={params.time} />
           <input type="hidden" name="date" id="date" ref={register} value={location.state.date} />
@@ -77,7 +74,7 @@ export default function Form({ appt, onSubmit, date, time }) {
             id="project_description"
             name="project_description"
             maxLength="250"
-            minHeight="25%"
+            line-height="140px"
             ref={register({ required: true })}
             placeholder="Maximum of 250 characters"
           />
@@ -93,9 +90,15 @@ export default function Form({ appt, onSubmit, date, time }) {
           />
           <br />
           <br />
-          <button type="submit" value="Submit">
+          <Button
+            className={classes.button}
+            color="primary"
+            variant="contained"
+            startIcon={<ArrowUpwardIcon color="white" />}
+            type="submit"
+          >
             Submit
-          </button>
+          </Button>
         </form>
         <h5>To cancel, click outside of the pop-up window.</h5>
       </Container>

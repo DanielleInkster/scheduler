@@ -14,8 +14,8 @@ export default function Intro() {
           height="200vh"
         ></img>
         <h4> We&apos;re a fake business and you can be too!</h4>
-        Want to learn more? Request an appointment for an info session with one of our many fake
-        experts to guide you on your journey.
+        Want to learn more about creating your own fake business? We&apos;d love to help you out.
+        Request an appointment with one of our many fake experts to pitch us your best ideas.
       </Typography>
     </div>
   );
