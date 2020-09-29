@@ -9,7 +9,6 @@ export default function CreateAppt({ date, time }) {
   const params = useParams();
 
   const onSubmit = async (data) => {
-    console.log(data);
     await createAppt(data);
     history.push(`/${params.date}/ViewAppointment/${params.time}`);
   };
