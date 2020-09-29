@@ -1,10 +1,32 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { Button, Container, Typography } from '@material-ui/core';
+import { useParams, useHistory, Link } from 'react-router-dom';
+import { Button, Container, Typography, Table, TableRow } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import 'fontsource-roboto';
+import { fontFamily, color } from '@material-ui/system';
 
-export default function Table({ date, data }) {
+const useStyles = makeStyles((theme) => ({
+  table: {
+    flexGrow: 1,
+  },
+  tablerow: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: '#3f51b5',
+    },
+    textAlign: 'center',
+    flexGrow: 1,
+  },
+  tableitem: {
+    flexGrow: 1,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+  },
+}));
+
+export default function TableSchedule({ date, data }) {
   let params = useParams();
+  let history = useHistory();
+  const classes = useStyles();
 
   function getTime(time) {
     return time.replace(/[: ]+/g, '');
@@ -24,11 +46,11 @@ export default function Table({ date, data }) {
       return (data = schedule.map((slot, index) => {
         const { time, status } = slot;
         return (
-          <tr key={index}>
-            <td>{time}</td>
-            <td>{status}</td>
+          <TableRow className={classes.tablerow} key={index}>
+            <td className={classes.tableitem}>{time}</td>
+            <td className={classes.tableitem}>{status}</td>
             {status === 'available' && (
-              <td>
+              <td className={classes.tableitem}>
                 <Link
                   to={{
                     pathname: `${params.date}/CreateAppointment/${getTime(time)}`,
@@ -37,6 +59,7 @@ export default function Table({ date, data }) {
                       time: time,
                     },
                   }}
+                  style={{ textDecoration: 'none', color: 'white', fontFamily: 'sans-serif' }}
                 >
                   Create Request
                 </Link>
@@ -44,23 +67,35 @@ export default function Table({ date, data }) {
             )}
             {status === 'pending' && (
               <td>
-                <Link to={`${params.date}/ViewAppointment/${getTime(time)}`}>View Request</Link>
+                <Link
+                  to={{
+                    pathname: `${params.date}/ViewAppointment/${getTime(time)}`,
+                    state: {
+                      date: date,
+                      time: time,
+                    },
+                  }}
+                  style={{ textDecoration: 'none', color: 'white', fontFamily: 'sans-serif' }}
+                >
+                  View Request
+                </Link>
               </td>
             )}
-          </tr>
+            {status === 'unavailable' && <td></td>}
+          </TableRow>
         );
       }));
     }
   }
 
   return (
-    <div className="Table">
+    <div className={classes.table}>
       <Container>
         <Typography variant="h7">
-          <table>
+          <Table>
             <tr>{renderTableHeader()}</tr>
             <tbody>{renderTableData()}</tbody>
-          </table>
+          </Table>
         </Typography>
       </Container>
     </div>
