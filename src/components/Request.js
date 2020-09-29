@@ -25,6 +25,17 @@ export default function Request() {
     history.push(`/${params.date}/EditAppointment/${params.time}`, { appt: appt });
   }
 
+  function loadingError() {
+    return (
+      <div>
+        <p>
+          Uh-oh! It's not you, it's us! Something went wrong loading this page. Please try again.
+        </p>
+        <button onClick={history.push('/')}>Go Home </button>
+      </div>
+    );
+  }
+
   return appt ? (
     <div>
       <h2> Request for Appointment</h2>
@@ -38,6 +49,6 @@ export default function Request() {
       <button onClick={removeAppt}>Delete Request</button>
     </div>
   ) : (
-    <div>Loading...</div>
+    <div>Loading... {setTimeout(() => loadingError, 3000)}</div>
   );
 }
