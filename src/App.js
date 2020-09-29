@@ -9,18 +9,19 @@ import './App.css';
 
 /* eslint-disable */
 function App() {
+
   return (
     <div className="App">
     <Router>
       <Switch>
         <Route exact match path="/" render={() => { return <DayPicker />; }} />
         <Route exact match path="/:date" render={() => { return <DayPicker />; }} />
-        <ModalRoute component={CreateAppt} path='/:date/CreateAppointment/:time' /> 
+        <ModalRoute component={CreateAppt} path='/:date/CreateAppointment/:time' parentPath='/'/> 
         <Route exact match path='/:date/ViewAppointment/:time'render={() => { return <Request />; }} />
-        <ModalRoute component={EditAppt} path='/:date/EditAppointment/:time' /> 
+        <ModalRoute component={EditAppt} path='/:date/EditAppointment/:time'parentPath='/'/> 
         <Route path="*" render={() => { return( <div>Page Not Found</div>)}} />
       </Switch>
-      <ModalContainer />
+      <ModalContainer/>
       </Router>
     </div>
   );

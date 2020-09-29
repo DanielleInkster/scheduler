@@ -1,10 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useHistory } from 'react-router-dom';
+import { ModalLink } from 'react-router-modal';
 
 export default function Form({ appt, onSubmit }) {
   const params = useParams();
   const location = useLocation();
+  const history = useHistory();
 
   const { register, handleSubmit } = useForm({
     defaultValues: {
@@ -75,6 +77,7 @@ export default function Form({ appt, onSubmit }) {
             Submit
           </button>
         </form>
+        <h5>To cancel, click outside of the pop-up window.</h5>
       </center>
     </div>
   );
