@@ -1,7 +1,13 @@
 import React from 'react';
-import FormPopup from '../components/Popup';
+import { useParams, Link } from 'react-router-dom';
 
 export default function Table({ date, data }) {
+  let params = useParams();
+
+  function getTime(time) {
+    return time.replace(/[: ]+/g, '');
+  }
+
   function renderTableHeader(schedule = data) {
     if (date !== 'Please select a date for an appointment.') {
       let header = Object.keys(schedule[0]);
@@ -21,12 +27,22 @@ export default function Table({ date, data }) {
             <td>{status}</td>
             {status === 'available' && (
               <td>
-                <FormPopup date={date} time={time} title={'Request this time'} />
+                <Link
+                  to={{
+                    pathname: `${params.date}/CreateAppointment/${getTime(time)}`,
+                    state: {
+                      date: date,
+                      time: time,
+                    },
+                  }}
+                >
+                  Create Request
+                </Link>
               </td>
             )}
             {status === 'pending' && (
               <td>
-                <FormPopup date={date} time={time} title={'Edit Request'} />
+                <Link to={`${params.date}/ViewAppointment/${getTime(time)}`}>View Request</Link>
               </td>
             )}
           </tr>

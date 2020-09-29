@@ -9,9 +9,10 @@
     "react": "^16.13.1",
     "react-day-picker": "^7.4.8",
     "react-dom": "^16.13.1",
+    "react-hook-form": "^6.8.6",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
-    "reactjs-popup": "^2.0.4"
+    "react-router-modal": "^2.0.0-rc3",
+    "react-scripts": "3.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
