@@ -1,15 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { getAppt, deleteAppt } from '../api';
+import Header from '../Assets/Header';
+import { makeStyles } from '@material-ui/core/styles';
 import { Button, Container, Typography } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-import 'fontsource-roboto';
+import { Grid } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    flexGrow: 1,
+    margin: theme.spacing(1),
+    marginBottom: theme.spacing(2),
+  },
+}));
 
 export default function Request() {
   const [appt, setRequest] = useState('');
   const params = useParams();
   const history = useHistory();
+  const classes = useStyles();
 
   useEffect(() => {
     const fetchAppt = async () => {
@@ -39,32 +50,46 @@ export default function Request() {
   }
 
   return appt ? (
-    <Container>
-      <Typography variant="h5" component="h2">
-        <div>
-          <h2>
-            <u>Request for Appointment</u>
-          </h2>
-          <h4>Date: {appt.date}</h4>
-          <h4>Time: {appt.time}</h4>
-          <h4>Name: {appt.name}</h4>
-          <p>Project Name: {appt.project_name}</p>
-          <p>Project Description: {appt.project_description}</p>
-          <p>Contact Email: {appt.email}</p>
-          <Button color="primary" variant="contained" startIcon={<EditIcon />} onClick={editAppt}>
-            Edit Request
-          </Button>
-          <Button
-            color="primary"
-            variant="contained"
-            startIcon={<DeleteIcon />}
-            onClick={removeAppt}
-          >
-            Delete Request
-          </Button>
-        </div>
-      </Typography>
-    </Container>
+    <div>
+      <Header />
+      <Grid container direction="row" justify="center">
+        <Grid item>
+          <Typography variant="h5" component="h2">
+            <div>
+              <h2>
+                <u>Request for Appointment</u>
+              </h2>
+              <h4>Date: {appt.date}</h4>
+              <h4>Time: {appt.time}</h4>
+              <h4>Name: {appt.name}</h4>
+              <p>Project Name: {appt.project_name}</p>
+              <p>Project Description: {appt.project_description}</p>
+              <p>Contact Email: {appt.email}</p>
+              <Button
+                className={classes.button}
+                color="primary"
+                variant="contained"
+                margin="2%"
+                padding="2%"
+                startIcon={<EditIcon />}
+                onClick={editAppt}
+              >
+                Edit Request
+              </Button>
+              <Button
+                className={classes.button}
+                color="primary"
+                variant="contained"
+                startIcon={<DeleteIcon />}
+                onClick={removeAppt}
+              >
+                Delete Request
+              </Button>
+            </div>
+          </Typography>
+        </Grid>
+      </Grid>
+    </div>
   ) : (
     <div>Loading... {setTimeout(() => loadingError, 3000)}</div>
   );

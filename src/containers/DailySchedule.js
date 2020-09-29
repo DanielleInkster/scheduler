@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Table from '../containers/Table';
 import { getAppts } from '../api';
 import { useParams } from 'react-router-dom';
-import { Grid, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import 'fontsource-roboto';
 
 export default function DailySchedule({ date }) {
