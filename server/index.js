@@ -3,6 +3,18 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const Appointments = require('./models/Appointments');
+const nodemailer = require('nodemailer');
+const sendgridTransport = require('nodemailer-sendgrid-transport');
+const KEY = process.env.SENDGRID_API_KEY;
+//
+
+const transporter = nodemailer.createTransport(
+  sendgridTransport({
+    auth: {
+      api_key: KEY,
+    },
+  }),
+);
 
 mongoose.connect('mongodb://127.0.0.1:27017/appointments', { useNewUrlParser: true });
 
@@ -89,6 +101,21 @@ app.post('/create', (req, res) => {
   appt
     .save()
     .then((appt) => {
+      transporter.sendMail({
+        to: req.body.email,
+        from: 'MyFakeBusinessAcct@gmail.com',
+        subject: 'Your Appointment Request with MyFakeBusiness',
+        html: `
+                     <p>You've requested an appointment with MyFakeBusiness.</p>
+                     <h4><u>Appointment Details:</u></h4>
+                     <h5>Date: ${req.body.date}</h5>
+                     <h5>Time: ${req.body.time}</h5>
+                     <h5>Project Name: ${req.body.project_name}</h5>
+                     <h5>Project Description: ${req.body.project_description}</h5>
+                     <p>You should receive a confirmation email within 24 hours. We look forward to working with you!</p>
+                     <p>MyFakeBusiness Team</p>
+                     `,
+      });
       res.json(appt);
     })
     .catch((err) => {
