@@ -1,5 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Button, Container, Typography } from '@material-ui/core';
+import 'fontsource-roboto';
 
 export default function Table({ date, data }) {
   let params = useParams();
@@ -53,10 +55,14 @@ export default function Table({ date, data }) {
 
   return (
     <div className="Table">
-      <table>
-        <tr>{renderTableHeader()}</tr>
-        <tbody>{renderTableData()}</tbody>
-      </table>
+      <Container>
+        <Typography variant="h7">
+          <table>
+            <tr>{renderTableHeader()}</tr>
+            <tbody>{renderTableData()}</tbody>
+          </table>
+        </Typography>
+      </Container>
     </div>
   );
 }

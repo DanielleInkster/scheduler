@@ -1,12 +1,11 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useParams, useLocation, useHistory } from 'react-router-dom';
-import { ModalLink } from 'react-router-modal';
+import { useParams, useLocation } from 'react-router-dom';
+import 'fontsource-roboto';
 
 export default function Form({ appt, onSubmit }) {
   const params = useParams();
   const location = useLocation();
-  const history = useHistory();
 
   const { register, handleSubmit } = useForm({
     defaultValues: {

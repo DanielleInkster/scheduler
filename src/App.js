@@ -8,11 +8,12 @@ import Request from '../src/components/Request.js';
 import './App.css';
 
 /* eslint-disable */
+
 function App() {
 
   return (
     <div className="App">
-    <Router>
+      <Router>
       <Switch>
         <Route exact match path="/" render={() => { return <DayPicker />; }} />
         <Route exact match path="/:date" render={() => { return <DayPicker />; }} />
