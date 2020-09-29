@@ -106,15 +106,17 @@ app.post('/create', (req, res) => {
         from: 'MyFakeBusinessAcct@gmail.com',
         subject: 'Your Appointment Request with MyFakeBusiness',
         html: `
-                     <p>You requested for an appointment with MyFakeBusiness.</p>
-                     <p>Appointment Details:</p>
+                     <p>You've requested an appointment with MyFakeBusiness.</p>
+                     <h4><u>Appointment Details:</u></h4>
                      <h5>Date: ${req.body.date}</h5>
                      <h5>Time: ${req.body.time}</h5>
                      <h5>Project Name: ${req.body.project_name}</h5>
                      <h5>Project Description: ${req.body.project_description}</h5>
+                     <p>You should receive a confirmation email within 24 hours. We look forward to working with you!</p>
+                     <p>MyFakeBusiness Team</p>
                      `,
       });
-      res.json(appt, 'check your email');
+      res.json(appt);
     })
     .catch((err) => {
       res.status(500).send(err.message);
