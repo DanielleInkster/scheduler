@@ -1,12 +1,30 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useParams, useLocation, useHistory } from 'react-router-dom';
-import { ModalLink } from 'react-router-modal';
+import { useParams, useLocation } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import { Container } from '@material-ui/core';
+import 'react-router-modal/css/react-router-modal.css';
+import 'fontsource-roboto';
 
-export default function Form({ appt, onSubmit }) {
+const styles = {
+  paper: {
+    padding: '1vw',
+    paddingBottom: '2vw',
+    textAlign: 'center',
+    color: '#FFFFFF',
+    whiteSpace: 'wrap',
+    background: '#6573c3',
+    margin: '1vh',
+    minHeight: 132,
+    justifyContent: 'center',
+  },
+};
+const useStyles = makeStyles(styles);
+
+export default function Form({ appt, onSubmit, date, time }) {
   const params = useParams();
   const location = useLocation();
-  const history = useHistory();
+  const classes = useStyles();
 
   const { register, handleSubmit } = useForm({
     defaultValues: {
@@ -23,12 +41,13 @@ export default function Form({ appt, onSubmit }) {
 
   return (
     <div>
-      <center>
+      <Container className={classes.paper}>
         <form onSubmit={submitHandler}>
+          {console.log(location)}
           <input type="hidden" name="date_id" id="date_id" ref={register} value={params.date} />
           <input type="hidden" name="time_id" id="time_id" ref={register} value={params.time} />
-          <input type="hidden" name="date" id="date" ref={register} value={location.state.date} />
-          <input type="hidden" name="time" id="time" ref={register} value={location.state.time} />
+          <input type="hidden" name="date" id="date" ref={register} value={date} />
+          <input type="hidden" name="time" id="time" ref={register} value={time} />
           <h3>Request for Appointment</h3>
           <p>Date: {appt ? appt.date : location.state.date}</p>
           <p>Time: {appt ? appt.time : location.state.time}</p>
@@ -57,9 +76,10 @@ export default function Form({ appt, onSubmit }) {
             type="text"
             id="project_description"
             name="project_description"
-            maxLength="1000"
+            maxLength="250"
+            minHeight="25%"
             ref={register({ required: true })}
-            placeholder="Maximum of 1000 characters"
+            placeholder="Maximum of 250 characters"
           />
           <br />
           <br />
@@ -78,7 +98,7 @@ export default function Form({ appt, onSubmit }) {
           </button>
         </form>
         <h5>To cancel, click outside of the pop-up window.</h5>
-      </center>
+      </Container>
     </div>
   );
 }
