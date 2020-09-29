@@ -3,16 +3,25 @@ import { useParams, useHistory } from 'react-router-dom';
 import { getAppt, deleteAppt } from '../api';
 import Header from '../Assets/Header';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Container, Typography } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Grid } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
   button: {
     flexGrow: 1,
     margin: theme.spacing(1),
     marginBottom: theme.spacing(2),
+  },
+  whitepaper: {
+    padding: '1vw',
+    paddingBottom: '2vw',
+    textAlign: 'center',
+    background: '#FFFFFF',
+    whiteSpace: 'wrap',
+    margin: '1vh',
   },
 }));
 
@@ -55,7 +64,7 @@ export default function Request() {
       <Grid container direction="row" justify="center">
         <Grid item>
           <Typography variant="h5" component="h2">
-            <div>
+            <div className={classes.whitepaper}>
               <h2>
                 <u>Request for Appointment</u>
               </h2>

@@ -3,7 +3,6 @@ import Form from './Form';
 import { useParams, useHistory } from 'react-router-dom';
 import { getAppt, updateAppt } from '../api';
 import 'fontsource-roboto';
-import 'react-router-modal/css/react-router-modal.css';
 
 export default function EditAppt() {
   let params = useParams();
