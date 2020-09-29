@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Table from '../containers/Table';
 import { getAppts } from '../api';
 import { useParams } from 'react-router-dom';
+import { Grid } from '@material-ui/core';
+import 'fontsource-roboto';
 
 export default function DailySchedule({ date }) {
   /* eslint-disable */
@@ -44,10 +46,12 @@ export default function DailySchedule({ date }) {
 
   return (
     <div>
-      {date === null && <p id="date"> Please select a date. </p>}
-      {date !== null && <p id="date">{date.toDateString()}</p>}
-      {items.length > 0 && createNewSchedule()}
-      <center>{date !== null && <Table date={date.toDateString()} data={schedule} />}</center>
+      <Grid item>
+        {date === null && <p id="date"> Please select a date. </p>}
+        {date !== null && <p id="date">{date.toDateString()}</p>}
+        {items.length > 0 && createNewSchedule()}
+        <center>{date !== null && <Table date={date.toDateString()} data={schedule} />}</center>
+      </Grid>
     </div>
   );
 }
