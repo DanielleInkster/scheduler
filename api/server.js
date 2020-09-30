@@ -140,16 +140,6 @@ app.delete('/delete/:date/:time', (req, res) => {
   });
 });
 
-app.delete('/deleteAll', (req, res) => {
-  Appointments.remove((err, records) => {
-    if (err) {
-      return res.status(400).json({ success: false, error: err });
-    } else {
-      return res.status(200).json({ success: true });
-    }
-  });
-});
-
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../my-app/build/index.html'));
 });
