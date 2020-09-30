@@ -6,7 +6,6 @@ const Appointments = require('./Appointments');
 const nodemailer = require('nodemailer');
 const sendgridTransport = require('nodemailer-sendgrid-transport');
 const KEY = process.env.SENDGRID_API_KEY;
-const PASS = process.env.PASSWORD;
 const path = require('path');
 //
 
@@ -19,7 +18,7 @@ const transporter = nodemailer.createTransport(
 );
 
 mongoose
-  .connect`'mongodb+srv://Danielle:${PASS}@cluster0.0gq9u.mongodb.net/appointments?retryWrites=true&w=majority`, {
+  .connect('mongodb+srv://Danielle:clothes386@cluster0.0gq9u.mongodb.net/appointments?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
