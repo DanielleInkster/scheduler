@@ -59,14 +59,14 @@ export default function Calendar() {
   return (
     <div className={classes.root}>
       <Header />
-      <Grid container spacing={2} direction="row" justify="space-evenly">
-        <Grid item xs={5}>
+      <Grid container spacing={1} direction="row" justify="space-evenly">
+        <Grid item lg={5} md={4} sm={12}>
           <Paper className={classes.paper}>
             <Intro />
           </Paper>
         </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.whitepaper}>
+        <Grid item lg={3} md={4} sm={6} xs={12}>
+          <Paper className={classes.whitepaper} lg={3} md={4} sm={6} xs={12}>
             <DayPicker
               selectedDays={date}
               onDayClick={handleDayClick}
@@ -74,8 +74,8 @@ export default function Calendar() {
             />
           </Paper>
         </Grid>
-        <Grid item xs={4}>
-          <Paper className={classes.paper}>
+        <Grid item lg={4} md={4} sm={6} xs={12}>
+          <Paper className={classes.paper} lg={4} md={4} sm={6} xs={12}>
             <DailySchedule date={date} />
           </Paper>
         </Grid>
