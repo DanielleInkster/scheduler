@@ -26,14 +26,14 @@ mongoose.connection.once('open', () => {
   console.log('Mongodb connection established successfully');
 });
 
-const PORT = 8081;
+const PORT = 8081 || process.env.PORT;
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../my-app/build')));
+app.use(express.static(path.join(__dirname, './my-app/build')));
 
 app.get('/', (req, res) => {
   Appointments.find((err, appt) => {
@@ -141,7 +141,7 @@ app.delete('/delete/:date/:time', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../my-app/build/index.html'));
+  res.sendFile(path.join(__dirname, './my-app/build/index.html'));
 });
 
 app.listen(process.env.PORT || PORT, () => {
