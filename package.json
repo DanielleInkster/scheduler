@@ -4,11 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-		"start": "node server.js"
+    "start": "node server.js"
   },
   "engines": {
-   "node": "12.16.2"
-   },
+    "node": "12.16.2"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

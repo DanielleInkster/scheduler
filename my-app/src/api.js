@@ -1,10 +1,10 @@
-export const getAppts = (date) => fetch(`http://localhost:4000/${date}`).then((res) => res.json());
+export const getAppts = (date) => fetch(`/${date}`).then((res) => res.json());
 
 export const getAppt = (date, time) =>
-  fetch(`http://localhost:4000/${date}/${time}`).then((res) => res.json());
+  fetch(`/${date}/${time}`).then((res) => res.json());
 
 export const createAppt = (appt) =>
-  fetch('http://localhost:4000/create', {
+  fetch('/create', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -14,7 +14,7 @@ export const createAppt = (appt) =>
   });
 
 export const updateAppt = (appt, date, time) =>
-  fetch(`http://localhost:4000/${date}/${time}`, {
+  fetch(`/${date}/${time}`, {
     method: 'PUT',
     headers: {
       Accept: 'application/json',
@@ -24,7 +24,7 @@ export const updateAppt = (appt, date, time) =>
   });
 
 export const deleteAppt = (date, time) =>
-  fetch(`http://localhost:4000/delete/${date}/${time}`, {
+  fetch(`/delete/${date}/${time}`, {
     method: 'DELETE',
     headers: {
       Accept: 'application/json',

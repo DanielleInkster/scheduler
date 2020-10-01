@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-   "node": "12.16.2"
-   },
+    "node": "12.16.2"
+  },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
@@ -32,7 +32,7 @@
     "lint": "eslint --fix .",
     "lint-check": "eslint ."
   },
-   "proxy": "http://localhost:3080",
+  "proxy": "http://localhost:3080",
   "eslintConfig": {
     "extends": "react-app"
   },
