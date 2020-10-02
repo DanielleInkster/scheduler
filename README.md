@@ -1,4 +1,4 @@
-#Appointment App - MERN
+# Appointment App - MERN
 
 ## Live Web App
 Click [here](http://myfakebusiness.us-east-2.elasticbeanstalk.com/) to view the project deployed on AWS Elastic Beanstalk.
