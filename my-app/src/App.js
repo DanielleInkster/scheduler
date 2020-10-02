@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import { ModalContainer, ModalRoute } from 'react-router-modal';
+import { Grid } from '@material-ui/core';
 import DayPicker from './containers/DayPicker.js';
 import CreateAppt from './components/CreateAppt.js';
 import EditAppt from './components/EditAppt.js';
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <div className="App">
+      <Grid container>
       <Router>
       <Switch>
         <Route exact match path="/" render={() => { return <DayPicker />; }} />
@@ -22,8 +24,11 @@ function App() {
         <ModalRoute component={EditAppt} path='/:date/EditAppointment/:time'parentPath='/'/> 
         <Route path="*" render={() => { return( <div>Page Not Found</div>)}} />
       </Switch>
+      <div id = "modal">
       <ModalContainer/>
+      </div>
       </Router>
+      </Grid>
     </div>
   );
 }
