@@ -21,11 +21,13 @@
     "gulp": "^4.0.2",
     "gulp-zip": "^5.0.2",
     "mongoose": "^5.10.7",
-    "nodemailer": "^6.4.11",
+    "nodemailer": "^6.4.13",
     "nodemailer-sendgrid-transport": "^0.2.0",
     "nodemon": "^2.0.4",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
     "webpack-stream": "^6.1.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.12"
   }
 }
