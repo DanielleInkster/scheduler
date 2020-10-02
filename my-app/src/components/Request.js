@@ -3,10 +3,9 @@ import { useParams, useHistory } from 'react-router-dom';
 import { getAppt, deleteAppt } from '../api';
 import Header from '../Assets/Header';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Typography } from '@material-ui/core';
+import { Button, Typography, Grid } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { Grid } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
@@ -50,20 +49,11 @@ export default function Request() {
     history.push(`/${params.date}/EditAppointment/${params.time}`, { appt: appt });
   }
 
-  function loadingError() {
-    return (
-      <div>
-        <p>Uh-oh! Something went wrong loading this page. Please try again.</p>
-        <button onClick={history.push('/')}>Go Home </button>
-      </div>
-    );
-  }
-
   return appt ? (
     <div>
       <Header />
       <Grid container direction="row" justify="center">
-        <Grid item>
+        <Grid item lg={5} md={6} sm={10}>
           <Typography variant="h5" component="h2">
             <div className={classes.whitepaper}>
               <h2>
@@ -72,8 +62,8 @@ export default function Request() {
               <h4>Date: {appt.date}</h4>
               <h4>Time: {appt.time}</h4>
               <h4>Name: {appt.name}</h4>
-              <p>Project Name: {appt.project_name}</p>
-              <p>Project Description: {appt.project_description}</p>
+              <p>Business Name: {appt.project_name}</p>
+              <p>Business Description: {appt.project_description}</p>
               <p>Contact Email: {appt.email}</p>
               <Button
                 className={classes.button}
@@ -101,6 +91,12 @@ export default function Request() {
       </Grid>
     </div>
   ) : (
-    <div>Loading... {setTimeout(() => loadingError, 3000)}</div>
+    <div>
+      <Paper className={classes.whitepaper}>
+        <p>Uh-oh! Something went wrong loading this page. Please try again.</p>
+        <button onClick={()=> history.push('/')}>Go Home </button>
+      </Paper>
+    </div>
   );
 }
+
