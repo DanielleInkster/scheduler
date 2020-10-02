@@ -2,17 +2,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const Appointments = require('./models/Appointments');
+const Appointments = require('./Appointments');
 const nodemailer = require('nodemailer');
 const sendgridTransport = require('nodemailer-sendgrid-transport');
 const path = require('path');
-const KEY = process.env.SENDGRID_API_KEY;
 //
 
 const transporter = nodemailer.createTransport(
   sendgridTransport({
     auth: {
-      api_key: KEY,
+      api_key: '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',
     },
   }),
 );
