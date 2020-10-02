@@ -3,9 +3,10 @@ import { useParams, useHistory } from 'react-router-dom';
 import { getAppt, deleteAppt } from '../api';
 import Header from '../Assets/Header';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Typography, Grid } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { Grid } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
@@ -53,9 +54,9 @@ export default function Request() {
     <div>
       <Header />
       <Grid container direction="row" justify="center">
-        <Grid item lg={5} md={6} sm={10}>
+        <Grid item lg={5} md={6} sm={12}>
           <Typography variant="h5" component="h2">
-            <div className={classes.whitepaper}>
+            <div className={classes.whitepaper} lg={5} md={6} sm={8} xs={12}>
               <h2>
                 <u>Request for Appointment</u>
               </h2>
@@ -94,7 +95,7 @@ export default function Request() {
     <div>
       <Paper className={classes.whitepaper}>
         <p>Uh-oh! Something went wrong loading this page. Please try again.</p>
-        <button onClick={()=> history.push('/')}>Go Home </button>
+        <button onClick={() => history.push('/')}>Go Home </button>
       </Paper>
     </div>
   );

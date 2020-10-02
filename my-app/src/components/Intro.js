@@ -13,8 +13,8 @@ theme = responsiveFontSizes(theme);
 const heading = 'Welcome to MyFakeBusiness';
 const subHeading = 'We\'re a fake business and you can be too!'
 const text =
-  " Want to learn more about creating your own fake business? We'd love to help you out." +
-  'Request an appointment with one of our many fake experts to pitch us your best ideas.';
+  ' Interested in creating your own fake business? Unsure if your business idea has what it takes to be fake? We\'d love to help you out.' +
+  ' Request an appointment with one of our many fake experts to pitch us your best ideas.';
 
 export default function Intro() {
   return (

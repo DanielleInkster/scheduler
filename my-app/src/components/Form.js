@@ -2,10 +2,23 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams, useLocation } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Button, Typography } from '@material-ui/core';
+import {
+  Container,
+  Button,
+  Typography,
+  responsiveFontSizes,
+  createMuiTheme,
+  MuiThemeProvider,
+} from '@material-ui/core';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import 'react-router-modal/css/react-router-modal.css';
 import 'fontsource-roboto';
+
+let theme = createMuiTheme();
+theme = responsiveFontSizes(theme);
+
+const text =
+  'To cancel, click outside of the pop-up window or use the back button on your browser.';
 
 const styles = {
   paper: {
@@ -39,7 +52,7 @@ export default function Form({ appt, onSubmit, date, time }) {
 
   return (
     <div>
-      <Container className={classes.paper}>
+      <Container className={classes.paper} width="110%">
         <form onSubmit={submitHandler}>
           <input type="hidden" name="date_id" id="date_id" ref={register} value={params.date} />
           <input type="hidden" name="time_id" id="time_id" ref={register} value={params.time} />
@@ -100,7 +113,9 @@ export default function Form({ appt, onSubmit, date, time }) {
             Submit
           </Button>
         </form>
-        <h5>To cancel, click outside of the pop-up window.</h5>
+        <Typography variant="subtitle1" gutterBottom>
+          {text}
+        </Typography>
       </Container>
     </div>
   );

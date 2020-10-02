@@ -14,7 +14,6 @@ function App() {
 
   return (
     <div className="App">
-      <Grid container>
       <Router>
       <Switch>
         <Route exact match path="/" render={() => { return <DayPicker />; }} />
@@ -28,7 +27,6 @@ function App() {
       <ModalContainer/>
       </div>
       </Router>
-      </Grid>
     </div>
   );
 }
