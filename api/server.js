@@ -11,7 +11,8 @@ const path = require("path");
 const transporter = nodemailer.createTransport(
   sendgridTransport({
     auth: {
-      api_key: KEY,
+      api_key:
+        KEY,
     },
   })
 );
@@ -102,23 +103,40 @@ app.post("/create", (req, res) => {
     email: req.body.email,
   });
 
-  appt
-    .save()
-    .then((appt) => {
-      transporter.sendMail({
-        to: req.body.email,
-        from: "MyFakeBusinessAcct@gmail.com",
-        subject: "Your Appointment Request with MyFakeBusiness",
-        html: `
+  const email = {
+    from:  "MyFakeBusinessAcct@gmail.com",
+    to: req.body.email,
+    subject:"Your Appointment Request with MyFakeBusiness",
+    teXt:`You've requested an appointment with MyFakeBusiness. \n
+                     Appointment Details:\n
+                     Date: ${req.body.date}\n
+                     Time: ${req.body.time}\n
+                     Business Name: ${req.body.project_name}\n
+                     Business Description: ${req.body.project_description}\n
+                     You should receive a confirmation email within 24 hours. We look forward to working with you!\n
+                     MyFakeBusiness Team`,
+    html: `
                      <p>You've requested an appointment with MyFakeBusiness.</p>
                      <h4><u>Appointment Details:</u></h4>
                      <h5>Date: ${req.body.date}</h5>
                      <h5>Time: ${req.body.time}</h5>
-                     <h5>Project Name: ${req.body.project_name}</h5>
-                     <h5>Project Description: ${req.body.project_description}</h5>
+                     <h5>Business Name: ${req.body.project_name}</h5>
+                     <h5>Business Description: ${req.body.project_description}</h5>
                      <p>You should receive a confirmation email within 24 hours. We look forward to working with you!</p>
                      <p>MyFakeBusiness Team</p>
                      `,
+  };
+
+  appt
+    .save()
+    .then((appt) => {
+      transporter.sendMail(email, function(err, info){
+    if (err ){
+      console.log(error);
+    }
+    else {
+      console.log('Message sent: ' + info.response);
+    }
       });
       res.json(appt);
     })
