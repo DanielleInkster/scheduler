@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../Assets/Header';
 import DailySchedule from './DailySchedule';
-import Intro from '../components/Intro';
+import Intro from '../pages/Intro';
 import DayPicker from 'react-day-picker';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';

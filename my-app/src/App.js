@@ -3,9 +3,9 @@ import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import { ModalContainer, ModalRoute } from 'react-router-modal';
 import { Grid } from '@material-ui/core';
 import DayPicker from './containers/DayPicker.js';
-import CreateAppt from './components/CreateAppt.js';
-import EditAppt from './components/EditAppt.js';
-import Request from './components/Request.js';
+import CreateAppt from './pages/CreateAppt.js';
+import EditAppt from './pages/EditAppt.js';
+import Request from './pages/Request.js';
 import './App.css';
 
 /* eslint-disable */

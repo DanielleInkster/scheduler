@@ -1,5 +1,7 @@
 # Appointment App - MERN
 
+<div align="center"><img src="./myfakebusiness.gif" alt="Gif of MyFakeBusiness site in use" width="500px" height="350px"></div>
+
 ## Live Web App
 Click [here](http://myfakebusiness.us-east-2.elasticbeanstalk.com/) to view the project deployed on AWS Elastic Beanstalk.
 

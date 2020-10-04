@@ -71,7 +71,7 @@ export default function Form({ appt, onSubmit, date, time }) {
           />
           <br />
           <br />
-          <label htmlFor="project_name">Project name:</label>
+          <label htmlFor="project_name">Business name:</label>
           <input
             type="text"
             id="project_name"
@@ -81,7 +81,7 @@ export default function Form({ appt, onSubmit, date, time }) {
           />
           <br />
           <br />
-          <label htmlFor="project_description">Project description:</label>
+          <label htmlFor="project_description">Business description:</label>
           <input
             type="text"
             id="project_description"
