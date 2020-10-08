@@ -75,11 +75,11 @@ app.put("/:date/:time", (req, res) => {
     if (!appt) {
       res.status(404).send("Appt not found");
     } else {
-      appt[0].name = req.body.name;
-      appt[0].project_name = req.body.project_name;
-      appt[0].project_description = req.body.project_description;
-      appt[0].email = req.body.email;
-      appt[0].save().then(function (doc) {
+      appt.name = req.body.name;
+      appt.project_name = req.body.project_name;
+      appt.project_description = req.body.project_description;
+      appt.email = req.body.email;
+      appt.save().then(function (doc) {
         if (!doc) {
           next(new Error("Error while persisting!"));
         }
