@@ -104,10 +104,10 @@ app.post("/create", (req, res) => {
   });
 
   const email = {
-    from:  "MyFakeBusinessAcct@gmail.com",
+    from: "MyFakeBusinessAcct@gmail.com",
     to: req.body.email,
-    subject:"Your Appointment Request with MyFakeBusiness",
-    teXt:`You've requested an appointment with MyFakeBusiness. \n
+    subject: "Your Appointment Request with MyFakeBusiness",
+    teXt: `You've requested an appointment with MyFakeBusiness. \n
                      Appointment Details:\n
                      Date: ${req.body.date}\n
                      Time: ${req.body.time}\n
@@ -130,13 +130,13 @@ app.post("/create", (req, res) => {
   appt
     .save()
     .then((appt) => {
-      transporter.sendMail(email, function(err, info){
-    if (err ){
-      console.log(error);
-    }
-    else {
-      console.log('Message sent: ' + info.response);
-    }
+      transporter.sendMail(email, function (err, info) {
+        if (err) {
+          console.log(error);
+        }
+        else {
+          console.log('Message sent: ' + info.response);
+        }
       });
       res.json(appt);
     })
