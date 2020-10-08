@@ -7,7 +7,6 @@ import { Button, Typography } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Grid } from '@material-ui/core';
-import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -47,7 +46,7 @@ export default function Request() {
   }
 
   function editAppt() {
-    history.push(`/${params.date}/EditAppointment/${params.time}`, { appt: appt });
+    history.push(`/edit/${params.date}/${params.time}`, { appt: appt });
   }
 
   return appt ? (
@@ -92,11 +91,10 @@ export default function Request() {
       </Grid>
     </div>
   ) : (
-    <div>
-      <Paper className={classes.whitepaper}>
-        <p>Uh-oh! Something went wrong loading this page. Please try again.</p>
-        <button onClick={() => history.push('/')}>Go Home </button>
-      </Paper>
-    </div>
-  );
+      <div className={classes.whitepaper} lg={5} md={6} sm={8} xs={12}>
+          <p>Uh-oh! Something went wrong loading this page. Please try again.</p>
+          <button onClick={() => history.push('/')}>Go Home </button>
+
+      </div>
+    );
 }

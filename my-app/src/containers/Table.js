@@ -3,7 +3,6 @@ import { useParams, Link } from 'react-router-dom';
 import { Container, Typography, Table, TableRow } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import 'fontsource-roboto';
-import { fontFamily, color } from '@material-ui/system';
 
 const useStyles = makeStyles((theme) => ({
   table: {
@@ -52,7 +51,7 @@ export default function TableSchedule({ date, data }) {
               <td className={classes.tableitem}>
                 <Link
                   to={{
-                    pathname: `${params.date}/CreateAppointment/${getTime(time)}`,
+                    pathname: `create/${params.date}/${getTime(time)}`,
                     state: {
                       date: date,
                       time: time,
@@ -68,7 +67,7 @@ export default function TableSchedule({ date, data }) {
               <td>
                 <Link
                   to={{
-                    pathname: `${params.date}/ViewAppointment/${getTime(time)}`,
+                    pathname: `view/${params.date}/${getTime(time)}`,
                     state: {
                       date: date,
                       time: time,

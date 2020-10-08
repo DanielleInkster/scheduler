@@ -13,7 +13,7 @@ export default function CreateAppt({ date, time }) {
     window.alert(
       `Appointment request created for ${data.date} at ${data.time}. A confirmation email has been sent to your inbox.`,
     );
-    history.push(`/${params.date}/ViewAppointment/${params.time}`);
+    history.push(`/view/${params.date}/${params.time}`);
   };
   return (
     <div>
