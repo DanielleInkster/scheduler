@@ -8,7 +8,7 @@ Click [here](http://myfakebusiness.us-east-2.elasticbeanstalk.com/) to view the 
 ## Technologies
 * React
 * React Router
-* MongoDB Atlass
+* MongoDB Atlas
 * Express
 * Node
 * Sendgrid
