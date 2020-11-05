@@ -18,7 +18,7 @@ const transporter = nodemailer.createTransport(
 );
 
 mongoose.connect(
-  `mongodb+srv://Danielle:PASSWORD@cluster0.0gq9u.mongodb.net/appointments?retryWrites=true&w=majority`,
+  `mongodb+srv://Danielle:{myKey}@cluster0.0gq9u.mongodb.net/appointments?retryWrites=true&w=majority`,
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
@@ -71,7 +71,7 @@ app.get("/:date/:time", (req, res) => {
 app.put("/:date/:time", (req, res) => {
   const day = req.params.date;
   const time = req.params.time;
-  Appointments.find({ date_id: `${day}`, time_id: `${time}` }, (err, appt) => {
+  Appointments.findOne({ date_id: `${day}`, time_id: `${time}` }, (err, appt) => {
     if (!appt) {
       res.status(404).send("Appt not found");
     } else {
