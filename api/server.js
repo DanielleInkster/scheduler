@@ -11,8 +11,7 @@ const path = require("path");
 const transporter = nodemailer.createTransport(
   sendgridTransport({
     auth: {
-      api_key:
-        KEY,
+      api_key: KEY,
     },
   })
 );
@@ -71,24 +70,27 @@ app.get("/:date/:time", (req, res) => {
 app.put("/:date/:time", (req, res) => {
   const day = req.params.date;
   const time = req.params.time;
-  Appointments.findOne({ date_id: `${day}`, time_id: `${time}` }, (err, appt) => {
-    if (!appt) {
-      res.status(404).send("Appt not found");
-    } else {
-      appt.name = req.body.name;
-      appt.project_name = req.body.project_name;
-      appt.project_description = req.body.project_description;
-      appt.email = req.body.email;
-      appt.save().then(function (doc) {
-        if (!doc) {
-          next(new Error("Error while persisting!"));
-        }
-        res.status(201).json({
-          appt: doc,
+  Appointments.findOne(
+    { date_id: `${day}`, time_id: `${time}` },
+    (err, appt) => {
+      if (!appt) {
+        res.status(404).send("Appt not found");
+      } else {
+        appt.name = req.body.name;
+        appt.project_name = req.body.project_name;
+        appt.project_description = req.body.project_description;
+        appt.email = req.body.email;
+        appt.save().then(function (doc) {
+          if (!doc) {
+            next(new Error("Error while persisting!"));
+          }
+          res.status(201).json({
+            appt: doc,
+          });
         });
-      });
+      }
     }
-  });
+  );
 });
 
 app.post("/create", (req, res) => {
@@ -133,9 +135,8 @@ app.post("/create", (req, res) => {
       transporter.sendMail(email, function (err, info) {
         if (err) {
           console.log(error);
-        }
-        else {
-          console.log('Message sent: ' + info.response);
+        } else {
+          console.log("Message sent: " + info.response);
         }
       });
       res.json(appt);
